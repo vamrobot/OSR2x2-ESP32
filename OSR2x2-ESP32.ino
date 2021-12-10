@@ -109,7 +109,7 @@
 #define OSR2X2_POSITION_MIN -350
 
 // Set the 'average offset' value for the gap between the dual ring receivers in the OSR2x2
-// This allows you to being the dual ring receivers closer (positive value) or
+// This allows you to bring the dual ring receivers closer (positive value) or
 // spread the dual ring receivers apart (negative value)
 // An generally acceptable range is from -90 (toward much longer sleeves/onaholes)
 // to 30 (slightly smaller than a Quickshot case and helpful if your Quickshot is slipping
@@ -117,7 +117,7 @@
 // Example numbers to try for different sleeves:
 // Quickshot - 0
 // Quickshot compressed slightly - 20
-// Chinerse Quickshot - -20
+// Chinese Quickshot - -20
 // TOMAX Lilith Uterus - -90
 // Absorption Lilith Six Uterus - -50
 #define OSR2X2_DUAL_RING_RECEIVER_OFFSET 0
