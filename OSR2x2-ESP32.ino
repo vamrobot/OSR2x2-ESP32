@@ -1,4 +1,4 @@
-// ESP32-OSR2x2-vamrobot-v1.0
+// ESP32-OSR2x2-vamrobot-v1.1
 // by vamrobot 12-10-2021
 // based on OSR-Alpha3_ESP32 by TempestMAx 9-7-21
 // Please copy, share, learn, innovate, give attribution.
@@ -16,7 +16,7 @@
 // Have fun, play safe!
 // History:
 // Alpha3 - First ESP32 release, 9-7-2021
-// OSR2x2-ESP32-vamrobot-v1.0 12-10-2021
+// OSR2x2-ESP32-vamrobot-v1.1 12-10-2021
 
 
 // ----------------------------
@@ -24,7 +24,7 @@
 // ----------------------------
 
 // Device IDs, for external reference
-#define FIRMWARE_ID "OSR2x2-ESP32-vamrobot-v1.0.ino"  // Device and firmware version
+#define FIRMWARE_ID "OSR2x2-ESP32-vamrobot-v1.1.ino"  // Device and firmware version
 #define TCODE_VER "TCode v0.3"  // Current version of TCode
 
 // Select startup firmware mode
@@ -97,7 +97,7 @@
 #define StrokeMinValue -240 // Sets the minimum L0 (x axis) value
 #define RollMaxValue 120 // Sets the maximum R1 (y axis) value
 #define RollMinValue -120 // Sets the minimum R1 (y axis) value
-#define CompressionMaxValue 60 // Sets the maximum A3 (compression) value
+#define CompressionMaxValue 40 // Sets the maximum A3 (compression) value
 #define CompressionMinValue -20 // Sets the minimum A3 (compression) value
 #define BendMaxValue 40 // Sets the maximum A4 (bend) value
 #define BendMinValue -40 // Sets the minimum A4 (bend) value
@@ -149,10 +149,10 @@
 // Arm servo zeros
 // Change these to adjust arm positions
 // (1500 = centre)
-#define LowerLeftServo_ZERO 1455   // OSR2 Left Servo, OSR2x2/SR6 Lower Left Servo
-#define UpperLeftServo_ZERO 1490   // OSR2x2/SR6 Upper Left Servo
-#define LowerRightServo_ZERO 1560  // OSR2 Right Servo, OSR2x2/SR6 Lower Right Servo
-#define UpperRightServo_ZERO 1510  // OSR2x2/SR6 Upper Right Servo
+#define LowerLeftServo_ZERO 1470   // OSR2 Left Servo, OSR2x2/SR6 Lower Left Servo
+#define UpperLeftServo_ZERO 1470   // OSR2x2/SR6 Upper Left Servo
+#define LowerRightServo_ZERO 1550  // OSR2 Right Servo, OSR2x2/SR6 Lower Right Servo
+#define UpperRightServo_ZERO 1515  // OSR2x2/SR6 Upper Right Servo
 #define TwistServo_ZERO 1500
 #define ValveServo_ZERO 1500
 
