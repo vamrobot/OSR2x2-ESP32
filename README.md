@@ -11,6 +11,8 @@ Some key features of the OSR2x2 and hence this firmware are:
  - Ability to set a constant 'average' gap between the dual ring receivers, which allows the use of any number of sleeves like the
     Quickshots, the 'Chinese' (Aliexpress) Quickshots, TOMAX, tons of Onaholes, etc
       - Example:
+        - // This allows you to bring the dual ring receivers closer (positive value) or
+        - // spread the dual ring receivers apart (negative value)
         - // Example numbers to try for different sleeves:
         - // Quickshot - 0
         - // Quickshot compressed slightly - 20
