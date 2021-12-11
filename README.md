@@ -10,6 +10,7 @@ Some key features of the OSR2x2 and hence this firmware are:
  - Bend mode/ability, driven by either T-Code 'A4' or the push buttons (for increasing and decreasinig it's frequency)
  - Ability to set a constant 'average' gap between the dual ring receivers, which allows the use of any number of sleeves like the
     Quickshots, the 'Chinese' (Aliexpress) Quickshots, TOMAX, tons of Onaholes, etc
+    Can also be controlled by the push buttons, see the INO for details
       - Example:
         - // This allows you to bring the dual ring receivers closer (positive value) or
         - // spread the dual ring receivers apart (negative value)
