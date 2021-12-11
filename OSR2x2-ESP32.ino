@@ -1,4 +1,4 @@
-// ESP32-OSR2x2-vamrobot-v1.1
+// ESP32-OSR2x2-vamrobot-v1.2
 // by vamrobot 12-10-2021
 // based on OSR-Alpha3_ESP32 by TempestMAx 9-7-21
 // Please copy, share, learn, innovate, give attribution.
@@ -16,7 +16,7 @@
 // Have fun, play safe!
 // History:
 // Alpha3 - First ESP32 release, 9-7-2021
-// OSR2x2-ESP32-vamrobot-v1.1 12-10-2021
+// OSR2x2-ESP32-vamrobot-v1.2 12-10-2021
 
 
 // ----------------------------
@@ -24,7 +24,7 @@
 // ----------------------------
 
 // Device IDs, for external reference
-#define FIRMWARE_ID "OSR2x2-ESP32-vamrobot-v1.1.ino"  // Device and firmware version
+#define FIRMWARE_ID "OSR2x2-ESP32-vamrobot-v1.2.ino"  // Device and firmware version
 #define TCODE_VER "TCode v0.3"  // Current version of TCode
 
 // Select startup firmware mode
@@ -42,39 +42,61 @@
 //
 //   1 - Uses 2 total push buttons having these functions:
 //       Button 1 (IncreaseL0SpeedButton_PIN) - Increase L0 (x axis) stroker speed in manual mode and switches firmware modes if held for 2 seconds
-//       Button 2 (DecreaseL0SpeedButton_PIN) - Decrease L0 (x axis) stroker speed in manual mode
+//       Button 2 (DecreaseL0SpeedButton_PIN) - Decrease L0 (x axis) stroker speed in manual mode and switches the two push buttons that function as
+//                                              Increase and Decrease for L0 (x axis) to function as Increase and Decrease for the Dual Ring Receiver Offset
+//                                              if held for 2 seconds, and if you hold it again for 2 seconds it toggles the function of the two buttons
+//                                              back to functioning as Increase and Decrease for L0 (x axis).
 //
 //   2 - Uses 3 total push buttons having these functions:
 //       Button 1 (IncreaseL0SpeedButton_PIN) - Increase L0 (x axis) stroker speed in manual mode and switches firmware modes if held for 2 seconds
-//       Button 2 (DecreaseL0SpeedButton_PIN) - Decrease L0 (x axis) stroker speed in manual mode
+//       Button 2 (DecreaseL0SpeedButton_PIN) - Decrease L0 (x axis) stroker speed in manual mode and switches the two push buttons that function as
+//                                              Increase and Decrease for L0 (x axis) to function as Increase and Decrease for the Dual Ring Receiver Offset
+//                                              if held for 2 seconds, and if you hold it again for 2 seconds it toggles the function of the two buttons
+//                                              back to functioning as Increase and Decrease for L0 (x axis).
 //       Button 3 (FirmwareSwitchButton_PIN) - Switches firmware modes
 //
 //   3 - Uses 4 total push buttons having these functions:
 //       Button 1 (IncreaseL0SpeedButton_PIN) - Increase L0 (x axis) stroker speed in manual mode and switches firmware modes if held for 2 seconds
-//       Button 2 (DecreaseL0SpeedButton_PIN) - Decrease L0 (x axis) stroker speed in manual mode
+//       Button 2 (DecreaseL0SpeedButton_PIN) - Decrease L0 (x axis) stroker speed in manual mode and switches the two push buttons that function as
+//                                              Increase and Decrease for L0 (x axis) to function as Increase and Decrease for the Dual Ring Receiver Offset
+//                                              if held for 2 seconds, and if you hold it again for 2 seconds it toggles the function of the two buttons
+//                                              back to functioning as Increase and Decrease for L0 (x axis).
 //       Button 3 (IncreaseA3SpeedButton_PIN) - Increase A3 (compression) stroker speed in manual mode and enables/disables A3 (compression) if held for 2 seconds
-//       Button 4 (DecreaseA3SpeedButton_PIN) - Decrease A3 (compression) stroker speed in manual mode
+//       Button 4 (DecreaseA3SpeedButton_PIN) - Decrease A3 (compression) stroker speed in manual mode and if the button is held for 2 seconds then
+//                                              the Dual Ring Receiver Offset value is reset to OSR2X2_DUAL_RING_RECEIVER_OFFSET
 //
 //   4 - Uses 5 total push buttons having these functions:
 //       Button 1 (IncreaseL0SpeedButton_PIN) - Increase L0 (x axis) stroker speed in manual mode and switches firmware modes if held for 2 seconds
-//       Button 2 (DecreaseL0SpeedButton_PIN) - Decrease L0 (x axis) stroker speed in manual mode
+//       Button 2 (DecreaseL0SpeedButton_PIN) - Decrease L0 (x axis) stroker speed in manual mode and switches the two push buttons that function as
+//                                              Increase and Decrease for L0 (x axis) to function as Increase and Decrease for the Dual Ring Receiver Offset
+//                                              if held for 2 seconds, and if you hold it again for 2 seconds it toggles the function of the two buttons
+//                                              back to functioning as Increase and Decrease for L0 (x axis).
 //       Button 3 (IncreaseA3SpeedButton_PIN) - Increase A3 (compression) stroker speed in manual mode and enables/disables A3 (compression) if held for 2 seconds
-//       Button 4 (DecreaseA3SpeedButton_PIN) - Decrease A3 (compression) stroker speed in manual mode
+//       Button 4 (DecreaseA3SpeedButton_PIN) - Decrease A3 (compression) stroker speed in manual mode and if the button is held for 2 seconds then
+//                                              the Dual Ring Receiver Offset value is reset to OSR2X2_DUAL_RING_RECEIVER_OFFSET
 //       Button 5 (FirmwareSwitchButton_PIN) - Switches firmware modes
 //
 //   5 - Uses 6 total push buttons having these functions:
 //       Button 1 (IncreaseL0SpeedButton_PIN) - Increase L0 (x axis) stroker speed in manual mode and switches firmware modes if held for 2 seconds
-//       Button 2 (DecreaseL0SpeedButton_PIN) - Decrease L0 (x axis) stroker speed in manual mode
+//       Button 2 (DecreaseL0SpeedButton_PIN) - Decrease L0 (x axis) stroker speed in manual mode and switches the two push buttons that function as
+//                                              Increase and Decrease for L0 (x axis) to function as Increase and Decrease for the Dual Ring Receiver Offset
+//                                              if held for 2 seconds, and if you hold it again for 2 seconds it toggles the function of the two buttons
+//                                              back to functioning as Increase and Decrease for L0 (x axis).
 //       Button 3 (IncreaseA3SpeedButton_PIN) - Increase A3 (compression) stroker speed in manual mode and enables/disables A3 (compression) if held for 2 seconds
-//       Button 4 (DecreaseA3SpeedButton_PIN) - Decrease A3 (compression) stroker speed in manual mode
+//       Button 4 (DecreaseA3SpeedButton_PIN) - Decrease A3 (compression) stroker speed in manual mode and if the button is held for 2 seconds then
+//                                              the Dual Ring Receiver Offset value is reset to OSR2X2_DUAL_RING_RECEIVER_OFFSET
 //       Button 5 (IncreaseA4SpeedButton_PIN) - Increase A4 (bend) stroker speed in manual mode and enables/disables A4 (bend) if held for 2 seconds
 //       Button 6 (DecreaseA4SpeedButton_PIN) - Decrease A4 (bend) stroker speed in manual mode
 //
 //   6 - Uses 7 total push buttons having these functions:
 //       Button 1 (IncreaseL0SpeedButton_PIN) - Increase L0 (x axis) stroker speed in manual mode and switches firmware modes if held for 2 seconds
-//       Button 2 (DecreaseL0SpeedButton_PIN) - Decrease L0 (x axis) stroker speed in manual mode
+//       Button 2 (DecreaseL0SpeedButton_PIN) - Decrease L0 (x axis) stroker speed in manual mode and switches the two push buttons that function as
+//                                              Increase and Decrease for L0 (x axis) to function as Increase and Decrease for the Dual Ring Receiver Offset
+//                                              if held for 2 seconds, and if you hold it again for 2 seconds it toggles the function of the two buttons
+//                                              back to functioning as Increase and Decrease for L0 (x axis).
 //       Button 3 (IncreaseA3SpeedButton_PIN) - Increase A3 (compression) stroker speed in manual mode and enables/disables A3 (compression) if held for 2 seconds
-//       Button 4 (DecreaseA3SpeedButton_PIN) - Decrease A3 (compression) stroker speed in manual mode
+//       Button 4 (DecreaseA3SpeedButton_PIN) - Decrease A3 (compression) stroker speed in manual mode and if the button is held for 2 seconds then
+//                                              the Dual Ring Receiver Offset value is reset to OSR2X2_DUAL_RING_RECEIVER_OFFSET
 //       Button 5 (IncreaseA4SpeedButton_PIN) - Increase A4 (bend) stroker speed in manual mode and enables/disables A4 (bend) if held for 2 seconds
 //       Button 6 (DecreaseA4SpeedButton_PIN) - Decrease A4 (bend) stroker speed in manual mode
 //       Button 7 (FirmwareSwitchButton_PIN) - Switches firmware modes
@@ -121,6 +143,9 @@
 // TOMAX Lilith Uterus - -90
 // Absorption Lilith Six Uterus - -50
 #define OSR2X2_DUAL_RING_RECEIVER_OFFSET 0
+
+// Step change value for the Dual Ring Receiver Offset for when using the two push buttons to modify the OSR2X2_DUAL_RING_RECEIVER_OFFSET value
+#define OSR2X2_DUAL_RING_RECEIVER_OFFSET_STEP_VALUE 20
 
 // Servo microseconds per radian
 // (Standard: 637 μs/rad)
@@ -838,6 +863,8 @@ float twistServoAngPos = 0.5;
 int twistTurns = 0;
 float twistPos;
 int firmwareMode = 0;
+int mainTwoButtonsMode = 0;
+int dualRingReceiverOffsetValue = OSR2X2_DUAL_RING_RECEIVER_OFFSET;
 bool compressionEnabled = false;
 bool bendEnabled = false;
 int compressionMax = max(abs(CompressionMinValue), abs(CompressionMaxValue));
@@ -1132,10 +1159,10 @@ void loop() {
         }
       }
       
-      ledcWrite(LowerLeftServo_PWM, map(LowerLeftServo_ZERO + SafeServoRange(stroke + roll + compression + bend + compressionOverlay + bendOverlay + OSR2X2_DUAL_RING_RECEIVER_OFFSET), 0, MainServo_Int, 0, 65535));
-      ledcWrite(LowerRightServo_PWM, map(LowerRightServo_ZERO + SafeServoRange(0 - stroke + roll - compression + bend - compressionOverlay + bendOverlay - OSR2X2_DUAL_RING_RECEIVER_OFFSET), 0, MainServo_Int, 0, 65535));
-      ledcWrite(UpperLeftServo_PWM, map(UpperLeftServo_ZERO + SafeServoRange(stroke + roll - compression - bend - compressionOverlay - bendOverlay - OSR2X2_DUAL_RING_RECEIVER_OFFSET), 0, MainServo_Int, 0, 65535));
-      ledcWrite(UpperRightServo_PWM, map(UpperRightServo_ZERO + SafeServoRange(0 - stroke + roll + compression - bend + compressionOverlay - bendOverlay + OSR2X2_DUAL_RING_RECEIVER_OFFSET), 0, MainServo_Int, 0, 65535));
+      ledcWrite(LowerLeftServo_PWM, map(LowerLeftServo_ZERO + SafeServoRange(stroke + roll + compression + bend + compressionOverlay + bendOverlay + dualRingReceiverOffsetValue), 0, MainServo_Int, 0, 65535));
+      ledcWrite(LowerRightServo_PWM, map(LowerRightServo_ZERO + SafeServoRange(0 - stroke + roll - compression + bend - compressionOverlay + bendOverlay - dualRingReceiverOffsetValue), 0, MainServo_Int, 0, 65535));
+      ledcWrite(UpperLeftServo_PWM, map(UpperLeftServo_ZERO + SafeServoRange(stroke + roll - compression - bend - compressionOverlay - bendOverlay - dualRingReceiverOffsetValue), 0, MainServo_Int, 0, 65535));
+      ledcWrite(UpperRightServo_PWM, map(UpperRightServo_ZERO + SafeServoRange(0 - stroke + roll + compression - bend + compressionOverlay - bendOverlay + dualRingReceiverOffsetValue), 0, MainServo_Int, 0, 65535));
     
       // Twist and valve
       int twist,valve;
@@ -1253,10 +1280,10 @@ void loop() {
         }
       }
       
-      ledcWrite(LowerLeftServo_PWM, map(LowerLeftServo_ZERO + SafeServoRange(stroke + roll + compression + bend + OSR2X2_DUAL_RING_RECEIVER_OFFSET), 0, MainServo_Int, 0, 65535));
-      ledcWrite(LowerRightServo_PWM, map(LowerRightServo_ZERO + SafeServoRange(0 - stroke + roll - compression + bend - OSR2X2_DUAL_RING_RECEIVER_OFFSET), 0, MainServo_Int, 0, 65535));
-      ledcWrite(UpperLeftServo_PWM, map(UpperLeftServo_ZERO + SafeServoRange(stroke + roll - compression - bend - OSR2X2_DUAL_RING_RECEIVER_OFFSET), 0, MainServo_Int, 0, 65535));
-      ledcWrite(UpperRightServo_PWM, map(UpperRightServo_ZERO + SafeServoRange(0 - stroke + roll + compression - bend + OSR2X2_DUAL_RING_RECEIVER_OFFSET), 0, MainServo_Int, 0, 65535));
+      ledcWrite(LowerLeftServo_PWM, map(LowerLeftServo_ZERO + SafeServoRange(stroke + roll + compression + bend + dualRingReceiverOffsetValue), 0, MainServo_Int, 0, 65535));
+      ledcWrite(LowerRightServo_PWM, map(LowerRightServo_ZERO + SafeServoRange(0 - stroke + roll - compression + bend - dualRingReceiverOffsetValue), 0, MainServo_Int, 0, 65535));
+      ledcWrite(UpperLeftServo_PWM, map(UpperLeftServo_ZERO + SafeServoRange(stroke + roll - compression - bend - dualRingReceiverOffsetValue), 0, MainServo_Int, 0, 65535));
+      ledcWrite(UpperRightServo_PWM, map(UpperRightServo_ZERO + SafeServoRange(0 - stroke + roll + compression - bend + dualRingReceiverOffsetValue), 0, MainServo_Int, 0, 65535));
     }
   }
 }
@@ -1271,7 +1298,14 @@ void ProcessPushButtons()
     
     if (pushButtonIncreaseL0State == 1) // Check if the button was pressed
     {
-      manualL0.Increase();
+      if (mainTwoButtonsMode)
+      {
+        dualRingReceiverOffsetValue -= OSR2X2_DUAL_RING_RECEIVER_OFFSET_STEP_VALUE;
+      }
+      else
+      {
+        manualL0.Increase();
+      }
     }
     else if (pushButtonIncreaseL0State == 2) // Check if the button was held
     {
@@ -1288,7 +1322,26 @@ void ProcessPushButtons()
     
     if (pushButtonDecreaseL0State == 1) // Check if the button was pressed
     {
-      manualL0.Decrease();
+      if (mainTwoButtonsMode)
+      {
+        dualRingReceiverOffsetValue += OSR2X2_DUAL_RING_RECEIVER_OFFSET_STEP_VALUE;
+      }
+      else
+      {
+        manualL0.Decrease();
+      }
+    }
+    else if (pushButtonDecreaseL0State == 2) // Check if the button was held
+    {
+      // Toggle the functions of the main two buttons between Increase/Decreasing L0 (x axis) and Increase/Decrease the Dual Ring Receiver Offset value
+      if (mainTwoButtonsMode)
+      {
+        mainTwoButtonsMode = 0;
+      }
+      else
+      {
+        mainTwoButtonsMode = 1;
+      }
     }
   }
   else if (PUSH_BUTTONS_CONFIG == 2)
@@ -1299,7 +1352,14 @@ void ProcessPushButtons()
     
     if (pushButtonIncreaseL0State == 1) // Check if the button was pressed
     {
-      manualL0.Increase();
+      if (mainTwoButtonsMode)
+      {
+        dualRingReceiverOffsetValue -= OSR2X2_DUAL_RING_RECEIVER_OFFSET_STEP_VALUE;
+      }
+      else
+      {
+        manualL0.Increase();
+      }
     }
     else if (pushButtonIncreaseL0State == 2) // Check if the button was held
     {
@@ -1316,7 +1376,26 @@ void ProcessPushButtons()
     
     if (pushButtonDecreaseL0State == 1) // Check if the button was pressed
     {
-      manualL0.Decrease();
+      if (mainTwoButtonsMode)
+      {
+        dualRingReceiverOffsetValue += OSR2X2_DUAL_RING_RECEIVER_OFFSET_STEP_VALUE;
+      }
+      else
+      {
+        manualL0.Decrease();
+      }
+    }
+    else if (pushButtonDecreaseL0State == 2) // Check if the button was held
+    {
+      // Toggle the functions of the main two buttons between Increase/Decreasing L0 (x axis) and Increase/Decrease the Dual Ring Receiver Offset value
+      if (mainTwoButtonsMode)
+      {
+        mainTwoButtonsMode = 0;
+      }
+      else
+      {
+        mainTwoButtonsMode = 1;
+      }
     }
     
     if (pushButtonFirmwareSwitchState == 1) // Check if the button was pressed
@@ -1341,7 +1420,14 @@ void ProcessPushButtons()
 
     if (pushButtonIncreaseL0State == 1) // Check if the button was pressed
     {
-      manualL0.Increase();
+      if (mainTwoButtonsMode)
+      {
+        dualRingReceiverOffsetValue -= OSR2X2_DUAL_RING_RECEIVER_OFFSET_STEP_VALUE;
+      }
+      else
+      {
+        manualL0.Increase();
+      }
     }
     else if (pushButtonIncreaseL0State == 2) // Check if the button was held
     {
@@ -1358,7 +1444,26 @@ void ProcessPushButtons()
     
     if (pushButtonDecreaseL0State == 1) // Check if the button was pressed
     {
-      manualL0.Decrease();
+      if (mainTwoButtonsMode)
+      {
+        dualRingReceiverOffsetValue += OSR2X2_DUAL_RING_RECEIVER_OFFSET_STEP_VALUE;
+      }
+      else
+      {
+        manualL0.Decrease();
+      }
+    }
+    else if (pushButtonDecreaseL0State == 2) // Check if the button was held
+    {
+      // Toggle the functions of the main two buttons between Increase/Decreasing L0 (x axis) and Increase/Decrease the Dual Ring Receiver Offset value
+      if (mainTwoButtonsMode)
+      {
+        mainTwoButtonsMode = 0;
+      }
+      else
+      {
+        mainTwoButtonsMode = 1;
+      }
     }
     
     if (pushButtonIncreaseA3State == 1) // Check if the button was pressed
@@ -1381,6 +1486,11 @@ void ProcessPushButtons()
     if (pushButtonDecreaseA3State == 1) // Check if the button was pressed
     {
       manualA3.Decrease();
+    }
+    else if (pushButtonDecreaseA3State == 2) // Check if the button was held
+    {
+      // Resets the Dual Ring Receiver Offset to the original value specified by OSR2X2_DUAL_RING_RECEIVER_OFFSET
+      dualRingReceiverOffsetValue = OSR2X2_DUAL_RING_RECEIVER_OFFSET;
     }
   }
   else if (PUSH_BUTTONS_CONFIG == 4)
@@ -1393,7 +1503,14 @@ void ProcessPushButtons()
     
     if (pushButtonIncreaseL0State == 1) // Check if the button was pressed
     {
-      manualL0.Increase();
+      if (mainTwoButtonsMode)
+      {
+        dualRingReceiverOffsetValue -= OSR2X2_DUAL_RING_RECEIVER_OFFSET_STEP_VALUE;
+      }
+      else
+      {
+        manualL0.Increase();
+      }
     }
     else if (pushButtonIncreaseL0State == 2) // Check if the button was held
     {
@@ -1410,7 +1527,26 @@ void ProcessPushButtons()
     
     if (pushButtonDecreaseL0State == 1) // Check if the button was pressed
     {
-      manualL0.Decrease();
+      if (mainTwoButtonsMode)
+      {
+        dualRingReceiverOffsetValue += OSR2X2_DUAL_RING_RECEIVER_OFFSET_STEP_VALUE;
+      }
+      else
+      {
+        manualL0.Decrease();
+      }
+    }
+    else if (pushButtonDecreaseL0State == 2) // Check if the button was held
+    {
+      // Toggle the functions of the main two buttons between Increase/Decreasing L0 (x axis) and Increase/Decrease the Dual Ring Receiver Offset value
+      if (mainTwoButtonsMode)
+      {
+        mainTwoButtonsMode = 0;
+      }
+      else
+      {
+        mainTwoButtonsMode = 1;
+      }
     }
     
     if (pushButtonIncreaseA3State == 1) // Check if the button was pressed
@@ -1433,6 +1569,11 @@ void ProcessPushButtons()
     if (pushButtonDecreaseA3State == 1) // Check if the button was pressed
     {
       manualA3.Decrease();
+    }
+    else if (pushButtonDecreaseA3State == 2) // Check if the button was held
+    {
+      // Resets the Dual Ring Receiver Offset to the original value specified by OSR2X2_DUAL_RING_RECEIVER_OFFSET
+      dualRingReceiverOffsetValue = OSR2X2_DUAL_RING_RECEIVER_OFFSET;
     }
     
     if (pushButtonFirmwareSwitchState == 1) // Check if the button was pressed
@@ -1459,7 +1600,14 @@ void ProcessPushButtons()
     
     if (pushButtonIncreaseL0State == 1) // Check if the button was pressed
     {
-      manualL0.Increase();
+      if (mainTwoButtonsMode)
+      {
+        dualRingReceiverOffsetValue -= OSR2X2_DUAL_RING_RECEIVER_OFFSET_STEP_VALUE;
+      }
+      else
+      {
+        manualL0.Increase();
+      }
     }
     else if (pushButtonIncreaseL0State == 2) // Check if the button was held
     {
@@ -1476,7 +1624,26 @@ void ProcessPushButtons()
     
     if (pushButtonDecreaseL0State == 1) // Check if the button was pressed
     {
-      manualL0.Decrease();
+      if (mainTwoButtonsMode)
+      {
+        dualRingReceiverOffsetValue += OSR2X2_DUAL_RING_RECEIVER_OFFSET_STEP_VALUE;
+      }
+      else
+      {
+        manualL0.Decrease();
+      }
+    }
+    else if (pushButtonDecreaseL0State == 2) // Check if the button was held
+    {
+      // Toggle the functions of the main two buttons between Increase/Decreasing L0 (x axis) and Increase/Decrease the Dual Ring Receiver Offset value
+      if (mainTwoButtonsMode)
+      {
+        mainTwoButtonsMode = 0;
+      }
+      else
+      {
+        mainTwoButtonsMode = 1;
+      }
     }
     
     if (pushButtonIncreaseA3State == 1) // Check if the button was pressed
@@ -1499,6 +1666,11 @@ void ProcessPushButtons()
     if (pushButtonDecreaseA3State == 1) // Check if the button was pressed
     {
       manualA3.Decrease();
+    }
+    else if (pushButtonDecreaseA3State == 2) // Check if the button was held
+    {
+      // Resets the Dual Ring Receiver Offset to the original value specified by OSR2X2_DUAL_RING_RECEIVER_OFFSET
+      dualRingReceiverOffsetValue = OSR2X2_DUAL_RING_RECEIVER_OFFSET;
     }
     
     if (pushButtonIncreaseA4State == 1) // Check if the button was pressed
@@ -1535,7 +1707,14 @@ void ProcessPushButtons()
     
     if (pushButtonIncreaseL0State == 1) // Check if the button was pressed
     {
-      manualL0.Increase();
+      if (mainTwoButtonsMode)
+      {
+        dualRingReceiverOffsetValue -= OSR2X2_DUAL_RING_RECEIVER_OFFSET_STEP_VALUE;
+      }
+      else
+      {
+        manualL0.Increase();
+      }
     }
     else if (pushButtonIncreaseL0State == 2) // Check if the button was held
     {
@@ -1552,7 +1731,26 @@ void ProcessPushButtons()
     
     if (pushButtonDecreaseL0State == 1) // Check if the button was pressed
     {
-      manualL0.Decrease();
+      if (mainTwoButtonsMode)
+      {
+        dualRingReceiverOffsetValue += OSR2X2_DUAL_RING_RECEIVER_OFFSET_STEP_VALUE;
+      }
+      else
+      {
+        manualL0.Decrease();
+      }
+    }
+    else if (pushButtonDecreaseL0State == 2) // Check if the button was held
+    {
+      // Toggle the functions of the main two buttons between Increase/Decreasing L0 (x axis) and Increase/Decrease the Dual Ring Receiver Offset value
+      if (mainTwoButtonsMode)
+      {
+        mainTwoButtonsMode = 0;
+      }
+      else
+      {
+        mainTwoButtonsMode = 1;
+      }
     }
     
     if (pushButtonIncreaseA3State == 1) // Check if the button was pressed
@@ -1575,6 +1773,11 @@ void ProcessPushButtons()
     if (pushButtonDecreaseA3State == 1) // Check if the button was pressed
     {
       manualA3.Decrease();
+    }
+    else if (pushButtonDecreaseA3State == 2) // Check if the button was held
+    {
+      // Resets the Dual Ring Receiver Offset to the original value specified by OSR2X2_DUAL_RING_RECEIVER_OFFSET
+      dualRingReceiverOffsetValue = OSR2X2_DUAL_RING_RECEIVER_OFFSET;
     }
     
     if (pushButtonIncreaseA4State == 1) // Check if the button was pressed
