@@ -848,18 +848,18 @@ void loop() {
     int strokeRangePotValue = StrokeRangePotPolarity ? ANALOG_MAX - analogRead(StrokeRangePotPin) : analogRead(StrokeRangePotPin);
     int strokeCenterPotValue = StrokeCenterPotPolarity ? ANALOG_MAX - analogRead(StrokeCenterPotPin) : analogRead(StrokeCenterPotPin);
 
-    Serial.print("strokeFrequencyPotValue position (%): ");
-    Serial.println(strokeFrequencyPotValue);
-    Serial.print("compressionFrequencyPotValue position (%): ");
-    Serial.println(compressionFrequencyPotValue);
-    Serial.print("bendFrequencyPotValue position (%): ");
-    Serial.println(bendFrequencyPotValue);
-    Serial.print("ringSpacingPotValue position (%): ");
-    Serial.println(ringSpacingPotValue);
-    Serial.print("strokeRangePotValue position (%): ");
-    Serial.println(strokeRangePotValue);
-    Serial.print("strokeCenterPotValue position (%): ");
-    Serial.println(strokeCenterPotValue);
+    //Serial.print("strokeFrequencyPotValue position (%): ");
+    //Serial.println(strokeFrequencyPotValue);
+    //Serial.print("compressionFrequencyPotValue position (%): ");
+    //Serial.println(compressionFrequencyPotValue);
+    //Serial.print("bendFrequencyPotValue position (%): ");
+    //Serial.println(bendFrequencyPotValue);
+    //Serial.print("ringSpacingPotValue position (%): ");
+    //Serial.println(ringSpacingPotValue);
+    //Serial.print("strokeRangePotValue position (%): ");
+    //Serial.println(strokeRangePotValue);
+    //Serial.print("strokeCenterPotValue position (%): ");
+    //Serial.println(strokeCenterPotValue);
 
     int ringSpacingValue = map(ringSpacingPotValue, 0, ANALOG_MAX, RingSpacingMin, RingSpacingMax);
 
